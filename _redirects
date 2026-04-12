@@ -1,0 +1,3 @@
+# Redirect grantarthur.com to gbarn.studio
+https://grantarthur.com/* https://gbarn.studio/:splat 301!
+https://www.grantarthur.com/* https://gbarn.studio/:splat 301!

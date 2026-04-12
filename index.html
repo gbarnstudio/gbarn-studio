@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GBARN</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --white: #f9f8f6;
+    --black: #0e0e0d;
+    --grey: #999;
+    --light: #e5e3de;
+    --gothic: 'UnifrakturCook', serif;
+    --serif: 'IM Fell English', Georgia, serif;
+    --sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--white);
+    color: var(--black);
+    font-family: var(--sans);
+    font-weight: 300;
+  }
+
+  /* HEADER */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 50;
+    background: var(--white);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.4s;
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+  header.scrolled { border-color: var(--light); }
+
+  .logo {
+    font-family: var(--gothic);
+    font-size: 2.2rem;
+    text-decoration: none;
+    color: var(--black);
+    line-height: 1;
+  }
+  .logo-img {
+    height: 36px;
+    width: auto;
+    display: block;
+  }
+
+  nav { display: flex; gap: 32px; align-items: center; }
+  nav a {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--black);
+    transition: color 0.2s;
+    font-family: var(--serif);
+  }
+  nav a:hover { color: var(--grey); }
+
+  /* MAIN */
+  main {
+    padding-top: 64px;
+    max-width: 860px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  /* INTRO */
+  .intro {
+    padding: 80px 0 64px;
+    border-bottom: 1px solid var(--light);
+  }
+  .intro-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-bottom: 20px;
+  }
+  .intro-title {
+    font-family: var(--gothic);
+    font-size: clamp(3.5rem, 9vw, 6.5rem);
+    line-height: 1;
+    margin-bottom: 28px;
+  }
+  .intro-title-img {
+    display: block;
+    max-width: 480px;
+    width: 100%;
+    height: auto;
+    margin-bottom: 28px;
+  }
+  .intro-text {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #555;
+    max-width: 540px;
+  }
+
+  /* WORK ITEMS */
+  .work-item {
+    padding: 56px 0;
+    border-bottom: 1px solid var(--light);
+  }
+  .work-item:last-of-type { border-bottom: none; }
+
+  .work-image {
+    width: 100%;
+    display: block;
+    margin-bottom: 14px;
+    cursor: zoom-in;
+    transition: opacity 0.3s;
+  }
+  .work-image:hover { opacity: 0.92; }
+
+  /* GIF and video same treatment */
+  .work-video {
+    width: 100%;
+    display: block;
+    margin-bottom: 14px;
+  }
+
+  .work-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 4px;
+  }
+  .work-title {
+    font-family: var(--sans);
+    font-size: 1.05rem;
+    font-weight: 300;
+  }
+  .work-year {
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    color: var(--grey);
+  }
+  .work-medium {
+    font-size: 0.68rem;
+    color: var(--grey);
+    font-style: italic;
+  }
+
+  /* ABOUT */
+  #about {
+    padding: 96px 0;
+    border-top: 1px solid var(--light);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+  }
+  .about-left h2 {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.05;
+    margin-bottom: 32px;
+  }
+  .about-left p {
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.9;
+    color: #555;
+    margin-bottom: 18px;
+  }
+  .about-fact {
+    padding: 13px 0;
+    border-bottom: 1px solid var(--light);
+    font-size: 0.78rem;
+    line-height: 1.6;
+    color: #666;
+    display: flex;
+    gap: 12px;
+  }
+  .about-fact:first-child { border-top: 1px solid var(--light); }
+  .fact-dash { color: var(--black); flex-shrink: 0; }
+
+  /* CONTACT */
+  #contact {
+    padding: 96px 0;
+    border-top: 1px solid var(--light);
+  }
+  #contact h2 {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 40px;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+  }
+  .contact-info p {
+    font-size: 0.85rem;
+    line-height: 1.9;
+    color: #555;
+    margin-bottom: 32px;
+  }
+  .contact-link {
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--black);
+    border-bottom: 1px solid var(--light);
+    padding: 10px 0;
+    transition: border-color 0.3s;
+  }
+  .contact-link:hover { border-color: var(--black); }
+
+  .form-row { margin-bottom: 24px; }
+  .form-label {
+    display: block;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-bottom: 8px;
+  }
+  .form-input, .form-textarea {
+    width: 100%;
+    background: none;
+    border: none;
+    border-bottom: 1px solid var(--light);
+    padding: 10px 0;
+    font-family: var(--sans);
+    font-size: 0.88rem;
+    font-weight: 300;
+    color: var(--black);
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  .form-input:focus, .form-textarea:focus { border-color: var(--black); }
+  .form-textarea { resize: none; height: 90px; }
+  .form-submit {
+    background: var(--black);
+    color: var(--white);
+    border: none;
+    padding: 13px 32px;
+    font-family: var(--sans);
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: opacity 0.3s;
+  }
+  .form-submit:hover { opacity: 0.7; }
+
+  /* SUBSCRIBE */
+  #subscribe {
+    padding: 56px 0;
+    border-top: 1px solid var(--light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .subscribe-text h3 {
+    font-family: var(--sans);
+    font-size: 1.6rem;
+    font-weight: 300;
+    margin-bottom: 4px;
+  }
+  .subscribe-text p { font-size: 0.75rem; color: var(--grey); }
+  .subscribe-form {
+    display: flex;
+    border-bottom: 1px solid var(--black);
+    flex: 1;
+    max-width: 380px;
+  }
+  .subscribe-input {
+    flex: 1;
+    background: none;
+    border: none;
+    padding: 10px 0;
+    font-size: 0.85rem;
+    color: var(--black);
+    outline: none;
+    font-family: var(--sans);
+  }
+  .subscribe-input::placeholder { color: var(--grey); }
+  .subscribe-btn {
+    background: none;
+    border: none;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding-left: 16px;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--light);
+    padding: 28px 0 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--grey);
+  }
+  .footer-logo {
+    font-family: var(--gothic);
+    font-size: 1.3rem;
+    color: var(--black);
+    text-decoration: none;
+    text-transform: none;
+  }
+  .footer-ig {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    color: var(--grey);
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  .footer-ig:hover { color: var(--black); }
+
+  /* LIGHTBOX */
+  .lb {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(249,248,246,0.97);
+    align-items: center;
+    justify-content: center;
+  }
+  .lb.on { display: flex; }
+  .lb img { max-width: 90vw; max-height: 90vh; object-fit: contain; }
+  .lb-close {
+    position: fixed;
+    top: 24px; right: 28px;
+    background: none;
+    border: none;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: var(--black);
+  }
+  .lb-prev, .lb-next {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--black);
+    padding: 16px;
+    opacity: 0.4;
+    transition: opacity 0.2s;
+    z-index: 201;
+  }
+  .lb-prev { left: 16px; }
+  .lb-next { right: 16px; }
+  .lb-prev:hover, .lb-next:hover { opacity: 1; }
+
+  /* MOBILE */
+  @media (max-width: 640px) {
+    header { padding: 0 20px; }
+    main { padding-left: 16px; padding-right: 16px; }
+    #about, .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+    #subscribe { flex-direction: column; align-items: flex-start; }
+    .subscribe-form { max-width: 100%; width: 100%; }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <!-- SWAP for hand-drawn logo when ready:
+       <a href="#"><img src="gbarn-logo.png" class="logo-img" alt="GBARN"></a> -->
+  <a href="#" class="logo">GBARN</a>
+  <nav>
+    <a href="#works">Works</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+
+  <div class="intro">
+    <p class="intro-label">Oil Pastel · Pencil · Painting · Digital — 2008 / 2026</p>
+    <h1 class="intro-title">GBARN</h1>
+    <p class="intro-text">Ritual marks. Mythic characters. The work of an artist who had a career, walked away from it, and came back rawer and freer than before.</p>
+  </div>
+
+  <section id="works">
+
+    <!-- 1. EXPIRATION DATE — opens everything -->
+    <div class="work-item">
+      <img class="work-image" src="FF6549DA-E601-4890-A127-948BAF565D02.png" alt="" onclick="openLb(this.src)" loading="lazy">
+      <div class="work-meta"><span class="work-title">Expiration Date</span><span class="work-year">2026</span></div>
+      <div class="work-medium">Composite</div>
+    </div>
+
+
+    <!-- 3. PLAN B WHITE CUBE -->
+    <div class="work-item">
+      <img class="work-image" src="B5FAF9D4-3817-4AF0-9EEC-6606D6F2B3BB.png" alt="" onclick="openLb(this.src)" loading="lazy">
+      <div class="work-meta"><span class="work-title">Plan B</span><span class="work-year">2026</span></div>
+      <div class="work-medium">Composite</div>
+    </div>
+
+    <!-- EA4. HOW DID WE GET HERE -->
+    <div class="work-item">
+      <img class="work-image" src="EA4B25D7-2510-4CF6-BB0B-2C09599EB775.png" alt="" onclick="openLb(this.src)" loading="lazy">
+      <div class="work-meta"><span class="work-title">How Did We Get Here</span><span class="work-year">2026</span></div>
+      <div class="work-medium">Composite</div>
+    </div>
+
+    <!-- 3. REFLECTION OF THE SUBCONSCIOUS -->
+    <div class="work-item">
+      <img class="work-image" src="89D81894-0284-49DF-88E8-24CEC5C589B4.png" alt="" onclick="openLb(this.src)" loading="lazy">
+      <div class="work-meta"><span class="work-title">Reflection of the Subconscious</span><span class="work-year">2026</span></div>
+      <div class="work-medium">Composite</div>
+    </div>
+
+    <!-- 4. LIVING ROOM WITH HOLE -->
+    <div class="work-item">
+      <img class="work-image" src="B3985475-9C2A-4045-ACEA-7526BC92FF64.png" alt="" onclick="openLb(this.src)" loading="lazy">
+      <div class="work-meta"><span class="work-title">Playing in Traffic</span><span class="work-year">2026</span></div>
+      <div class="work-medium">Composite</div>
+    </div>
+
+    <!-- 5. OCCULT GALLERY INSTALL -->
+    <div class="work-item">
+      <img class="work-image" src="EB7E257E-5A8C-4CAE-8EF7-585B2B9A4367.png" alt="" onclick="openLb(this.src)" loading="lazy">
+      <div class="work-meta"><span class="work-title">I Can't Outrun My Shadow</span><span class="work-year">2026</span></div>
+      <div class="work-medium">Composite</div>
+    </div>
+
+
+    <!-- 7. PINK VINYL FIGURE — AFRICAN VILLAGE / DRAGON CASTLE COMPOSITE -->
+    <div class="work-item">
+      <img class="work-image" src="86A4BDFD-8941-429A-B143-882ECCCCC9A0.png" alt="" onclick="openLb(this.src)" loading="lazy">
+      <div class="work-meta"><span class="work-title">Motel Garden</span><span class="work-year">2026</span></div>
+      <div class="work-medium">Composite</div>
+    </div>
+
+    <!-- 6. FRAGILE EXISTENCE -->
+    <div class="work-item">
+      <img class="work-image" src="BE1ACB2C-97D0-4333-AD36-54FAE39312B5.png" alt="" onclick="openLb(this.src)" loading="lazy">
+      <div class="work-meta"><span class="work-title">Fragile Existence</span><span class="work-year">2026</span></div>
+      <div class="work-medium">Composite</div>
+    </div>
+
+    <!-- 316. INSCRUTABLE SHADOWS -->
+    <div class="work-item">
+      <img class="work-image" src="316EDA14-82A5-4F2B-8BEF-2A5E2BFC4EC2.png" alt="" onclick="openLb(this.src)" loading="lazy">
+      <div class="work-meta"><span class="work-title">Inscrutable Shadows</span><span class="work-year">2026</span></div>
+      <div class="work-medium">Composite</div>
+    </div>
+
+    <!-- OUTRUNNING MY SHADOWS -->
+    <div class="work-item">
+      <img class="work-image" src="76D50FBA-3F42-46D0-9294-0777CCAE3ADB.png" alt="" onclick="openLb(this.src)" loading="lazy">
+      <div class="work-meta"><span class="work-title">Outrunning My Shadows</span><span class="work-year">2026</span></div>
+      <div class="work-medium">Composite</div>
+    </div>
+
+    <!-- 8. HORNED FIGURE PAINTING IN ROOM -->
+    <div class="work-item">
+      <img class="work-image" src="IMG_4789.jpeg" alt="" onclick="openLb(this.src)" loading="lazy">
+      <div class="work-meta"><span class="work-title">Time Traveler's Dilemma</span><span class="work-year">2026</span></div>
+      <div class="work-medium">Oil stick on canvas</div>
+    </div>
+
+    <!-- 8. WITCH DETAIL -->
+    <div class="work-item">
+      <img class="work-image" src="IMG_6031.jpg" alt="" onclick="openLb(this.src)" loading="lazy">
+      <div class="work-meta"><span class="work-title">Ghost of a Dead Goldfish</span><span class="work-year">2026</span></div>
+      <div class="work-medium">Oil pastel &amp; pencil on newsprint, 24 × 36 in.</div>
+    </div>
+
+    <!-- 9. DRAGON CASTLE -->
+    <div class="work-item">
+      <img class="work-image" src="IMG_6195.jpeg" alt="" onclick="openLb(this.src)" loading="lazy">
+      <div class="work-meta"><span class="work-title">Take the Ponies to the Closest Stream</span><span class="work-year">2026</span></div>
+      <div class="work-medium">Oil pastel &amp; pencil on newsprint, 24 × 36 in.</div>
+    </div>
+
+    <!-- 9b. BALLAD -->
+    <div class="work-item">
+      <img class="work-image" src="IMG_6036.jpg" alt="" onclick="openLb(this.src)" loading="lazy">
+      <div class="work-meta"><span class="work-title">Ballad of the Lost Sock</span><span class="work-year">2026</span></div>
+      <div class="work-medium">Oil pastel &amp; pencil on newsprint, 24 × 36 in.</div>
+    </div>
+
+    <!-- 2010. ELIZABETH TAYLOR -->
+    <div class="work-item">
+      <img class="work-image" src="2010-Elizabeth_Taylor.jpeg" alt="" onclick="openLb(this.src)" loading="lazy">
+      <div class="work-meta"><span class="work-title">Elizabeth Taylor</span><span class="work-year">2010</span></div>
+      <div class="work-medium">Acrylic on canvas</div>
+    </div>
+
+    <!-- 11. WIZARD -->
+    <div class="work-item">
+      <img class="work-image" src="IMG_6035.jpg" alt="" onclick="openLb(this.src)" loading="lazy">
+      <div class="work-meta"><span class="work-title">A Portrait of My Imaginary Alter-Ego</span><span class="work-year">2026</span></div>
+      <div class="work-medium">Oil pastel &amp; pencil on newsprint, 24 × 36 in.</div>
+    </div>
+
+    <!-- 12. CAVE PAINTING — 2010 representational -->
+    <div class="work-item">
+      <img class="work-image" src="2010-Rewarded_Position.jpg" alt="" onclick="openLb(this.src)" loading="lazy">
+      <div class="work-meta"><span class="work-title">Rewarded Position</span><span class="work-year">2010</span></div>
+      <div class="work-medium">Acrylic on canvas</div>
+    </div>
+
+    <!-- 13. DEMON WITH SWORD -->
+    <div class="work-item">
+      <img class="work-image" src="IMG_6037.jpg" alt="" onclick="openLb(this.src)" loading="lazy">
+      <div class="work-meta"><span class="work-title">osedax worms</span><span class="work-year">2026</span></div>
+      <div class="work-medium">Oil pastel &amp; pencil on newsprint, 24 × 36 in.</div>
+    </div>
+
+    <!-- 15. BLEEDING HEAD — quiet gut punch -->
+    <div class="work-item">
+      <img class="work-image" src="IMG_6033.jpg" alt="" onclick="openLb(this.src)" loading="lazy">
+      <div class="work-meta"><span class="work-title">Whale Fall</span><span class="work-year">2026</span></div>
+      <div class="work-medium">Oil pastel &amp; pencil on newsprint, 24 × 36 in.</div>
+    </div>
+
+    <!-- 16. NEVER YOURS painting -->
+    <div class="work-item">
+      <img class="work-image" src="2013-Never_Yours.jpg" alt="" onclick="openLb(this.src)" loading="lazy">
+      <div class="work-meta"><span class="work-title">Never Yours</span><span class="work-year">2013</span></div>
+      <div class="work-medium">Mixed media on drop cloth</div>
+    </div>
+
+    <!-- 2010. YOU SHOULD KNOW -->
+    <div class="work-item">
+      <img class="work-image" src="2010-You_Should_Know.jpeg" alt="" onclick="openLb(this.src)" loading="lazy">
+      <div class="work-meta"><span class="work-title">You Should Know</span><span class="work-year">2010</span></div>
+      <div class="work-medium">Acrylic on canvas</div>
+    </div>
+
+    <!-- 17. SQUATTING DEMON -->
+    <div class="work-item">
+      <img class="work-image" src="IMG_6038.jpg" alt="" onclick="openLb(this.src)" loading="lazy">
+      <div class="work-meta"><span class="work-title">Lifeless Outcrop</span><span class="work-year">2026</span></div>
+      <div class="work-medium">Oil pastel &amp; pencil on newsprint, 24 × 36 in.</div>
+    </div>
+
+    <!-- 18. MAGICIAN AND HEAD -->
+    <div class="work-item">
+      <img class="work-image" src="IMG_6029.jpg" alt="" onclick="openLb(this.src)" loading="lazy">
+      <div class="work-meta"><span class="work-title">Timekeeper's Dilemma</span><span class="work-year">2026</span></div>
+      <div class="work-medium">Oil pastel &amp; pencil on newsprint, 24 × 36 in.</div>
+    </div>
+
+    <!-- 19. WHERE WE LIVE -->
+    <div class="work-item">
+      <img class="work-image" src="2013-2014_Where_we_live.jpeg" alt="" onclick="openLb(this.src)" loading="lazy">
+      <div class="work-meta"><span class="work-title">Where We Live</span><span class="work-year">2013</span></div>
+      <div class="work-medium">Mixed media on drop cloth</div>
+    </div>
+
+    <!-- 21. FULL WITCH -->
+    <div class="work-item">
+      <img class="work-image" src="IMG_6032.jpg" alt="" onclick="openLb(this.src)" loading="lazy">
+      <div class="work-meta"><span class="work-title">More Scars Than Skin</span><span class="work-year">2026</span></div>
+      <div class="work-medium">Oil pastel &amp; pencil on newsprint, 24 × 36 in.</div>
+    </div>
+
+    <!-- 22. ANIMAL FAT -->
+    <div class="work-item">
+      <img class="work-image" src="2011_All_Measurements_are_Given_in_Animal_Fat.jpeg" alt="" onclick="openLb(this.src)" loading="lazy">
+      <div class="work-meta"><span class="work-title">All Measurements are Given in Animal Fat</span><span class="work-year">2011</span></div>
+      <div class="work-medium">Acrylic on canvas</div>
+    </div>
+
+    <!-- 2010. THE OTHER WOMAN -->
+    <div class="work-item">
+      <img class="work-image" src="2010-The_Other_Woman.jpeg" alt="" onclick="openLb(this.src)" loading="lazy">
+      <div class="work-meta"><span class="work-title">The Other Woman</span><span class="work-year">2010</span></div>
+      <div class="work-medium">Acrylic on canvas</div>
+    </div>
+
+    <!-- 23. OIL STICK PAINTING ON WALL -->
+    <div class="work-item">
+      <img class="work-image" src="IMG_6034.jpg" alt="" onclick="openLb(this.src)" loading="lazy">
+      <div class="work-meta"><span class="work-title">Phantom Visions</span><span class="work-year">2026</span></div>
+      <div class="work-medium">Oil stick on canvas</div>
+    </div>
+
+    <!-- 24. JUST BECAUSE I ROCK -->
+    <div class="work-item">
+      <img class="work-image" src="2014_Just_because_I_rock_doesnt_mean_Im_made_of_stone.jpeg" alt="" onclick="openLb(this.src)" loading="lazy">
+      <div class="work-meta"><span class="work-title">Just because I rock, doesn't mean I'm made of stone</span><span class="work-year">2014</span></div>
+      <div class="work-medium">Mixed media on drop cloth</div>
+    </div>
+
+    <!-- 26. CONCRETE FLOORS -->
+    <div class="work-item">
+      <img class="work-image" src="2011-concrete_floors_and-sandy_beaches.jpg" alt="" onclick="openLb(this.src)" loading="lazy">
+      <div class="work-meta"><span class="work-title">concrete floors and sandy beaches</span><span class="work-year">2011</span></div>
+      <div class="work-medium">Unfired ceramics, metal, wood</div>
+    </div>
+
+    <!-- 27. PRECIOUS BROKEN ELASTIC -->
+    <div class="work-item">
+      <img class="work-image" src="2009-Precious_Broken_Elastic.jpeg" alt="" onclick="openLb(this.src)" loading="lazy">
+      <div class="work-meta"><span class="work-title">Precious Broken Elastic</span><span class="work-year">2009</span></div>
+      <div class="work-medium">Acrylic on canvas</div>
+    </div>
+
+    <!-- 28. HANGMAN STATIC -->
+    <div class="work-item">
+      <img class="work-image" src="Hangman-web.png" alt="" onclick="openLb(this.src)" loading="lazy">
+      <div class="work-meta"><span class="work-title">Hangman</span><span class="work-year">2021</span></div>
+      <div class="work-medium">Digital</div>
+    </div>
+
+    <!-- 29. NAVAJO GRAFFITI — closes the scroll -->
+    <div class="work-item">
+      <img class="work-image" src="navajo_graffiti_arizona.jpeg" alt="" onclick="openLb(this.src)" loading="lazy">
+      <div class="work-meta"><span class="work-title">Navajo Graffiti, Arizona</span><span class="work-year">2012</span></div>
+      <div class="work-medium">Photography</div>
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-left">
+      <h2>Grant Arthur Barnhart</h2>
+      <p>Grant Arthur Barnhart has been making large-scale works for over two decades — widely exhibited, reviewed in the Los Angeles Times, Art in America, Juxtapoz, and the Seattle Times. Solo shows in Los Angeles, Seattle, Berlin, Luxembourg, and New York. Gallery representation on both coasts.</p>
+      <p>The current practice merges analog and digital — oil pastel and pencil drawings on newsprint become characters summoned into AI-constructed environments, creating worlds tailored entirely to his own vision. The composite works continue an investigation begun in the mid-2000s — constructing fictional environments where art and mythology coexist. The tools changed. The question didn't.</p>
+      <p>Barnhart has lived with bipolar disorder his entire life, diagnosed only recently. He makes work because of it, not despite it.</p>
+      <p>Born 1978. Based in New York.</p>
+    </div>
+    <div class="about-right">
+      <div class="about-fact"><span class="fact-dash">—</span>25+ years professional painting practice</div>
+      <div class="about-fact"><span class="fact-dash">—</span>Exhibited at Ambach &amp; Rice, Los Angeles</div>
+      <div class="about-fact"><span class="fact-dash">—</span>Reborn in a Navajo sweat lodge, American Southwest</div>
+      <div class="about-fact"><span class="fact-dash">—</span>10-day silent Vipassana retreat, Thailand</div>
+      <div class="about-fact"><span class="fact-dash">—</span>Lived in a cult, did not join the cult</div>
+      <div class="about-fact"><span class="fact-dash">—</span>Based in New York</div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Inquire</h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p>Original works available. New drawings on newsprint, 24 × 36 inches. Select paintings and digital works also available. For pricing, availability, or to discuss acquiring work, reach out directly.</p>
+        <a href="/cdn-cgi/l/email-protection#660104071408151213020f0926010b070f0a4805090b" class="contact-link"><span class="__cf_email__" data-cfemail="5c3b3e3d2e322f28293835331c3b313d3530723f3331">[email&#160;protected]</span></a>
+        <a href="https://instagram.com/gbarn.studio" target="_blank" class="contact-link">Instagram — @gbarn.studio</a>
+      </div>
+      <form onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <label class="form-label">Name</label>
+          <input type="text" class="form-input" required>
+        </div>
+        <div class="form-row">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-input" required>
+        </div>
+        <div class="form-row">
+          <label class="form-label">Message</label>
+          <textarea class="form-textarea"></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- SUBSCRIBE -->
+  <div id="subscribe">
+    <div class="subscribe-text">
+      <h3>Follow the work</h3>
+      <p>New pieces. No noise.</p>
+    </div>
+    <form class="subscribe-form" onsubmit="handleSub(event)">
+      <input type="email" class="subscribe-input" placeholder="your@email.com" required>
+      <button type="submit" class="subscribe-btn">Subscribe →</button>
+    </form>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="#" class="footer-logo">GBARN</a>
+    <span>© 2026 GBARN</span>
+    <a href="https://instagram.com/gbarn.studio" target="_blank" class="footer-ig">@gbarn.studio</a>
+  </footer>
+
+</main>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb">
+  <button class="lb-close" onclick="closeLb()">Close ✕</button>
+  <button class="lb-prev" onclick="lbNav(-1)">&#8592;</button>
+  <img id="lb-img" src="" alt="" onclick="event.stopPropagation()">
+  <button class="lb-next" onclick="lbNav(1)">&#8594;</button>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('hdr').classList.toggle('scrolled', scrollY > 20);
+  });
+
+  // Build image list from all work-image elements
+  let lbImages = [];
+  let lbIndex = 0;
+
+  function buildImageList() {
+    lbImages = Array.from(document.querySelectorAll('img.work-image')).map(img => img.src);
+  }
+
+  function openLb(src) {
+    buildImageList();
+    lbIndex = lbImages.indexOf(src);
+    if (lbIndex === -1) lbIndex = 0;
+    document.getElementById('lb-img').src = lbImages[lbIndex];
+    document.getElementById('lb').classList.add('on');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function lbNav(dir) {
+    lbIndex = (lbIndex + dir + lbImages.length) % lbImages.length;
+    document.getElementById('lb-img').src = lbImages[lbIndex];
+  }
+
+  function closeLb() {
+    document.getElementById('lb').classList.remove('on');
+    document.body.style.overflow = '';
+  }
+
+  // Close on background click
+  document.getElementById('lb').addEventListener('click', function(e) {
+    if (e.target === this) closeLb();
+  });
+
+  // Keyboard nav
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLb();
+    if (e.key === 'ArrowRight') lbNav(1);
+    if (e.key === 'ArrowLeft') lbNav(-1);
+  });
+
+  // Swipe support for mobile
+  let touchStartX = 0;
+  document.getElementById('lb').addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+  document.getElementById('lb').addEventListener('touchend', e => {
+    const diff = touchStartX - e.changedTouches[0].screenX;
+    if (Math.abs(diff) > 50) lbNav(diff > 0 ? 1 : -1);
+  });
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    e.target.querySelector('button').textContent = 'Sent';
+  }
+  function handleSub(e) {
+    e.preventDefault();
+    e.target.querySelector('button').textContent = 'Subscribed';
+  }
+</script></body>
+</html>
