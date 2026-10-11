@@ -120,19 +120,15 @@
 
   .work-image {
     width: 100%;
+    height: auto;
     display: block;
     margin-bottom: 14px;
     cursor: zoom-in;
     transition: opacity 0.3s;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
   }
   .work-image:hover { opacity: 0.92; }
-
-  /* GIF and video same treatment */
-  .work-video {
-    width: 100%;
-    display: block;
-    margin-bottom: 14px;
-  }
 
   .work-meta {
     display: flex;
@@ -405,240 +401,161 @@
 <main>
 
   <div class="intro">
-    <p class="intro-label">Oil Pastel · Pencil · Painting · Digital — 2008 / 2026</p>
+    <p class="intro-label">Oil Pastel · Pencil · Painting — 2008 / 2026</p>
     <h1 class="intro-title">GBARN</h1>
     <p class="intro-text">Ritual marks. Mythic characters. The work of an artist who had a career, walked away from it, and came back rawer and freer than before.</p>
   </div>
 
   <section id="works">
 
-    <!-- 1. EXPIRATION DATE — opens everything -->
-    <div class="work-item">
-      <img class="work-image" src="FF6549DA-E601-4890-A127-948BAF565D02.png" alt="" onclick="openLb(this.src)" loading="lazy">
-      <div class="work-meta"><span class="work-title">Expiration Date</span><span class="work-year">2026</span></div>
-      <div class="work-medium">Composite</div>
-    </div>
-
-
-    <!-- 3. PLAN B WHITE CUBE -->
-    <div class="work-item">
-      <img class="work-image" src="B5FAF9D4-3817-4AF0-9EEC-6606D6F2B3BB.png" alt="" onclick="openLb(this.src)" loading="lazy">
-      <div class="work-meta"><span class="work-title">Plan B</span><span class="work-year">2026</span></div>
-      <div class="work-medium">Composite</div>
-    </div>
-
-    <!-- EA4. HOW DID WE GET HERE -->
-    <div class="work-item">
-      <img class="work-image" src="EA4B25D7-2510-4CF6-BB0B-2C09599EB775.png" alt="" onclick="openLb(this.src)" loading="lazy">
-      <div class="work-meta"><span class="work-title">How Did We Get Here</span><span class="work-year">2026</span></div>
-      <div class="work-medium">Composite</div>
-    </div>
-
-    <!-- 3. REFLECTION OF THE SUBCONSCIOUS -->
-    <div class="work-item">
-      <img class="work-image" src="89D81894-0284-49DF-88E8-24CEC5C589B4.png" alt="" onclick="openLb(this.src)" loading="lazy">
-      <div class="work-meta"><span class="work-title">Reflection of the Subconscious</span><span class="work-year">2026</span></div>
-      <div class="work-medium">Composite</div>
-    </div>
-
-    <!-- 4. LIVING ROOM WITH HOLE -->
-    <div class="work-item">
-      <img class="work-image" src="B3985475-9C2A-4045-ACEA-7526BC92FF64.png" alt="" onclick="openLb(this.src)" loading="lazy">
-      <div class="work-meta"><span class="work-title">Playing in Traffic</span><span class="work-year">2026</span></div>
-      <div class="work-medium">Composite</div>
-    </div>
-
-    <!-- 5. OCCULT GALLERY INSTALL -->
-    <div class="work-item">
-      <img class="work-image" src="EB7E257E-5A8C-4CAE-8EF7-585B2B9A4367.png" alt="" onclick="openLb(this.src)" loading="lazy">
-      <div class="work-meta"><span class="work-title">I Can't Outrun My Shadow</span><span class="work-year">2026</span></div>
-      <div class="work-medium">Composite</div>
-    </div>
-
-
-    <!-- 7. PINK VINYL FIGURE — AFRICAN VILLAGE / DRAGON CASTLE COMPOSITE -->
-    <div class="work-item">
-      <img class="work-image" src="86A4BDFD-8941-429A-B143-882ECCCCC9A0.png" alt="" onclick="openLb(this.src)" loading="lazy">
-      <div class="work-meta"><span class="work-title">Motel Garden</span><span class="work-year">2026</span></div>
-      <div class="work-medium">Composite</div>
-    </div>
-
-    <!-- 6. FRAGILE EXISTENCE -->
-    <div class="work-item">
-      <img class="work-image" src="BE1ACB2C-97D0-4333-AD36-54FAE39312B5.png" alt="" onclick="openLb(this.src)" loading="lazy">
-      <div class="work-meta"><span class="work-title">Fragile Existence</span><span class="work-year">2026</span></div>
-      <div class="work-medium">Composite</div>
-    </div>
-
-    <!-- 316. INSCRUTABLE SHADOWS -->
-    <div class="work-item">
-      <img class="work-image" src="316EDA14-82A5-4F2B-8BEF-2A5E2BFC4EC2.png" alt="" onclick="openLb(this.src)" loading="lazy">
-      <div class="work-meta"><span class="work-title">Inscrutable Shadows</span><span class="work-year">2026</span></div>
-      <div class="work-medium">Composite</div>
-    </div>
-
-    <!-- OUTRUNNING MY SHADOWS -->
-    <div class="work-item">
-      <img class="work-image" src="72E5ADB8-A23B-4EF1-928C-3A59E9021994.jpg" alt="" onclick="openLb(this.src)" loading="lazy">
-      <div class="work-meta"><span class="work-title">Outrunning My Shadows</span><span class="work-year">2026</span></div>
-      <div class="work-medium">Composite</div>
-    </div>
-
-    <!-- 8. HORNED FIGURE PAINTING IN ROOM -->
+    <!-- 1. HORNED FIGURE — opens everything -->
     <div class="work-item">
       <img class="work-image" src="IMG_4789.jpeg" alt="" onclick="openLb(this.src)" loading="lazy">
       <div class="work-meta"><span class="work-title">Time Traveler's Dilemma</span><span class="work-year">2026</span></div>
       <div class="work-medium">Oil stick on canvas</div>
     </div>
 
-    <!-- 8. WITCH DETAIL -->
+    <!-- 2. WITCH DETAIL -->
     <div class="work-item">
       <img class="work-image" src="IMG_6031.jpg" alt="" onclick="openLb(this.src)" loading="lazy">
       <div class="work-meta"><span class="work-title">Ghost of a Dead Goldfish</span><span class="work-year">2026</span></div>
       <div class="work-medium">Oil pastel &amp; pencil on newsprint, 24 × 36 in.</div>
     </div>
 
-    <!-- 9. DRAGON CASTLE -->
-    <div class="work-item">
-      <img class="work-image" src="IMG_6195.jpg" alt="" onclick="openLb(this.src)" loading="lazy">
-      <div class="work-meta"><span class="work-title">Take the Ponies to the Closest Stream</span><span class="work-year">2026</span></div>
-      <div class="work-medium">Oil pastel &amp; pencil on newsprint, 24 × 36 in.</div>
-    </div>
-
-    <!-- 9b. BALLAD -->
-    <div class="work-item">
-      <img class="work-image" src="IMG_6036.jpg" alt="" onclick="openLb(this.src)" loading="lazy">
-      <div class="work-meta"><span class="work-title">Ballad of the Lost Sock</span><span class="work-year">2026</span></div>
-      <div class="work-medium">Oil pastel &amp; pencil on newsprint, 24 × 36 in.</div>
-    </div>
-
-    <!-- 2010. ELIZABETH TAYLOR -->
+    <!-- 3. ELIZABETH TAYLOR -->
     <div class="work-item">
       <img class="work-image" src="2010-Elizabeth_Taylor.jpeg" alt="" onclick="openLb(this.src)" loading="lazy">
       <div class="work-meta"><span class="work-title">Elizabeth Taylor</span><span class="work-year">2010</span></div>
       <div class="work-medium">Acrylic on canvas</div>
     </div>
 
-    <!-- 11. WIZARD -->
+    <!-- 4. -->
     <div class="work-item">
-      <img class="work-image" src="IMG_6035.jpg" alt="" onclick="openLb(this.src)" loading="lazy">
-      <div class="work-meta"><span class="work-title">A Portrait of My Imaginary Alter-Ego</span><span class="work-year">2026</span></div>
+      <img class="work-image" src="IMG_6195.jpg" alt="" onclick="openLb(this.src)" loading="lazy">
+      <div class="work-meta"><span class="work-title">Take the Ponies to the Closest Stream</span><span class="work-year">2026</span></div>
       <div class="work-medium">Oil pastel &amp; pencil on newsprint, 24 × 36 in.</div>
     </div>
 
-    <!-- 12. CAVE PAINTING — 2010 representational -->
+    <!-- 5. BALLAD -->
+    <div class="work-item">
+      <img class="work-image" src="IMG_6036.jpg" alt="" onclick="openLb(this.src)" loading="lazy">
+      <div class="work-meta"><span class="work-title">Ballad of the Lost Sock</span><span class="work-year">2026</span></div>
+      <div class="work-medium">Oil pastel &amp; pencil on newsprint, 24 × 36 in.</div>
+    </div>
+
+    <!-- 6. REWARDED POSITION -->
     <div class="work-item">
       <img class="work-image" src="2010-Rewarded_Position.jpg" alt="" onclick="openLb(this.src)" loading="lazy">
       <div class="work-meta"><span class="work-title">Rewarded Position</span><span class="work-year">2010</span></div>
       <div class="work-medium">Acrylic on canvas</div>
     </div>
 
-    <!-- 13. DEMON WITH SWORD -->
+    <!-- 7. WIZARD -->
     <div class="work-item">
-      <img class="work-image" src="IMG_6037.jpg" alt="" onclick="openLb(this.src)" loading="lazy">
-      <div class="work-meta"><span class="work-title">osedax worms</span><span class="work-year">2026</span></div>
+      <img class="work-image" src="IMG_6035.jpg" alt="" onclick="openLb(this.src)" loading="lazy">
+      <div class="work-meta"><span class="work-title">A Portrait of My Imaginary Alter-Ego</span><span class="work-year">2026</span></div>
       <div class="work-medium">Oil pastel &amp; pencil on newsprint, 24 × 36 in.</div>
     </div>
 
-    <!-- 15. BLEEDING HEAD — quiet gut punch -->
-    <div class="work-item">
-      <img class="work-image" src="IMG_6033.jpg" alt="" onclick="openLb(this.src)" loading="lazy">
-      <div class="work-meta"><span class="work-title">Whale Fall</span><span class="work-year">2026</span></div>
-      <div class="work-medium">Oil pastel &amp; pencil on newsprint, 24 × 36 in.</div>
-    </div>
-
-    <!-- 16. NEVER YOURS painting -->
-    <div class="work-item">
-      <img class="work-image" src="2013-Never_Yours.jpg" alt="" onclick="openLb(this.src)" loading="lazy">
-      <div class="work-meta"><span class="work-title">Never Yours</span><span class="work-year">2013</span></div>
-      <div class="work-medium">Mixed media on drop cloth</div>
-    </div>
-
-    <!-- 2010. YOU SHOULD KNOW -->
-    <div class="work-item">
-      <img class="work-image" src="2010-You_Should_Know.jpeg" alt="" onclick="openLb(this.src)" loading="lazy">
-      <div class="work-meta"><span class="work-title">You Should Know</span><span class="work-year">2010</span></div>
-      <div class="work-medium">Acrylic on canvas</div>
-    </div>
-
-    <!-- 17. SQUATTING DEMON -->
-    <div class="work-item">
-      <img class="work-image" src="IMG_6038.jpg" alt="" onclick="openLb(this.src)" loading="lazy">
-      <div class="work-meta"><span class="work-title">Lifeless Outcrop</span><span class="work-year">2026</span></div>
-      <div class="work-medium">Oil pastel &amp; pencil on newsprint, 24 × 36 in.</div>
-    </div>
-
-    <!-- 18. MAGICIAN AND HEAD -->
-    <div class="work-item">
-      <img class="work-image" src="IMG_6029.jpg" alt="" onclick="openLb(this.src)" loading="lazy">
-      <div class="work-meta"><span class="work-title">Timekeeper's Dilemma</span><span class="work-year">2026</span></div>
-      <div class="work-medium">Oil pastel &amp; pencil on newsprint, 24 × 36 in.</div>
-    </div>
-
-    <!-- 19. WHERE WE LIVE -->
+    <!-- 8. WHERE WE LIVE -->
     <div class="work-item">
       <img class="work-image" src="2013-2014_Where_we_live.jpeg" alt="" onclick="openLb(this.src)" loading="lazy">
       <div class="work-meta"><span class="work-title">Where We Live</span><span class="work-year">2013</span></div>
       <div class="work-medium">Mixed media on drop cloth</div>
     </div>
 
-    <!-- 21. FULL WITCH -->
+    <!-- 9. DEMON WITH SWORD -->
     <div class="work-item">
-      <img class="work-image" src="IMG_6032.jpg" alt="" onclick="openLb(this.src)" loading="lazy">
-      <div class="work-meta"><span class="work-title">More Scars Than Skin</span><span class="work-year">2026</span></div>
+      <img class="work-image" src="IMG_6037.jpg" alt="" onclick="openLb(this.src)" loading="lazy">
+      <div class="work-meta"><span class="work-title">osedax worms</span><span class="work-year">2026</span></div>
       <div class="work-medium">Oil pastel &amp; pencil on newsprint, 24 × 36 in.</div>
     </div>
 
-    <!-- 22. ANIMAL FAT -->
+    <!-- 10. NEVER YOURS -->
+    <div class="work-item">
+      <img class="work-image" src="2013-Never_Yours.jpg" alt="" onclick="openLb(this.src)" loading="lazy">
+      <div class="work-meta"><span class="work-title">Never Yours</span><span class="work-year">2013</span></div>
+      <div class="work-medium">Mixed media on drop cloth</div>
+    </div>
+
+    <!-- 11. BLEEDING HEAD -->
+    <div class="work-item">
+      <img class="work-image" src="IMG_6033.jpg" alt="" onclick="openLb(this.src)" loading="lazy">
+      <div class="work-meta"><span class="work-title">Whale Fall</span><span class="work-year">2026</span></div>
+      <div class="work-medium">Oil pastel &amp; pencil on newsprint, 24 × 36 in.</div>
+    </div>
+
+    <!-- 12. YOU SHOULD KNOW -->
+    <div class="work-item">
+      <img class="work-image" src="2010-You_Should_Know.jpeg" alt="" onclick="openLb(this.src)" loading="lazy">
+      <div class="work-meta"><span class="work-title">You Should Know</span><span class="work-year">2010</span></div>
+      <div class="work-medium">Acrylic on canvas</div>
+    </div>
+
+    <!-- 13. SQUATTING DEMON -->
+    <div class="work-item">
+      <img class="work-image" src="IMG_6038.jpg" alt="" onclick="openLb(this.src)" loading="lazy">
+      <div class="work-meta"><span class="work-title">Lifeless Outcrop</span><span class="work-year">2026</span></div>
+      <div class="work-medium">Oil pastel &amp; pencil on newsprint, 24 × 36 in.</div>
+    </div>
+
+    <!-- 14. ANIMAL FAT -->
     <div class="work-item">
       <img class="work-image" src="2011_All_Measurements_are_Given_in_Animal_Fat.jpeg" alt="" onclick="openLb(this.src)" loading="lazy">
       <div class="work-meta"><span class="work-title">All Measurements are Given in Animal Fat</span><span class="work-year">2011</span></div>
       <div class="work-medium">Acrylic on canvas</div>
     </div>
 
-    <!-- 2010. THE OTHER WOMAN -->
+    <!-- 15. MAGICIAN AND HEAD -->
+    <div class="work-item">
+      <img class="work-image" src="IMG_6029.jpg" alt="" onclick="openLb(this.src)" loading="lazy">
+      <div class="work-meta"><span class="work-title">Timekeeper's Dilemma</span><span class="work-year">2026</span></div>
+      <div class="work-medium">Oil pastel &amp; pencil on newsprint, 24 × 36 in.</div>
+    </div>
+
+    <!-- 16. FULL WITCH -->
+    <div class="work-item">
+      <img class="work-image" src="IMG_6032.jpg" alt="" onclick="openLb(this.src)" loading="lazy">
+      <div class="work-meta"><span class="work-title">More Scars Than Skin</span><span class="work-year">2026</span></div>
+      <div class="work-medium">Oil pastel &amp; pencil on newsprint, 24 × 36 in.</div>
+    </div>
+
+    <!-- 17. THE OTHER WOMAN -->
     <div class="work-item">
       <img class="work-image" src="2010-The_Other_Woman.jpeg" alt="" onclick="openLb(this.src)" loading="lazy">
       <div class="work-meta"><span class="work-title">The Other Woman</span><span class="work-year">2010</span></div>
       <div class="work-medium">Acrylic on canvas</div>
     </div>
 
-    <!-- 23. OIL STICK PAINTING ON WALL -->
+    <!-- 18. OIL STICK ON WALL -->
     <div class="work-item">
       <img class="work-image" src="IMG_6034.jpg" alt="" onclick="openLb(this.src)" loading="lazy">
       <div class="work-meta"><span class="work-title">Phantom Visions</span><span class="work-year">2026</span></div>
       <div class="work-medium">Oil stick on canvas</div>
     </div>
 
-    <!-- 24. JUST BECAUSE I ROCK -->
+    <!-- 19. JUST BECAUSE I ROCK -->
     <div class="work-item">
       <img class="work-image" src="2014_Just_because_I_rock_doesnt_mean_Im_made_of_stone.jpeg" alt="" onclick="openLb(this.src)" loading="lazy">
       <div class="work-meta"><span class="work-title">Just because I rock, doesn't mean I'm made of stone</span><span class="work-year">2014</span></div>
       <div class="work-medium">Mixed media on drop cloth</div>
     </div>
 
-    <!-- 26. CONCRETE FLOORS -->
+    <!-- 20. CONCRETE FLOORS -->
     <div class="work-item">
       <img class="work-image" src="2011-concrete_floors_and-sandy_beaches.jpg" alt="" onclick="openLb(this.src)" loading="lazy">
       <div class="work-meta"><span class="work-title">concrete floors and sandy beaches</span><span class="work-year">2011</span></div>
       <div class="work-medium">Unfired ceramics, metal, wood</div>
     </div>
 
-    <!-- 27. PRECIOUS BROKEN ELASTIC -->
+    <!-- 21. PRECIOUS BROKEN ELASTIC -->
     <div class="work-item">
       <img class="work-image" src="2009-Precious_Broken_Elastic.jpeg" alt="" onclick="openLb(this.src)" loading="lazy">
       <div class="work-meta"><span class="work-title">Precious Broken Elastic</span><span class="work-year">2009</span></div>
       <div class="work-medium">Acrylic on canvas</div>
     </div>
 
-    <!-- 28. HANGMAN STATIC -->
-    <div class="work-item">
-      <img class="work-image" src="Hangman-web.png" alt="" onclick="openLb(this.src)" loading="lazy">
-      <div class="work-meta"><span class="work-title">Hangman</span><span class="work-year">2021</span></div>
-      <div class="work-medium">Digital</div>
-    </div>
-
-    <!-- 29. NAVAJO GRAFFITI — closes the scroll -->
+    <!-- 22. NAVAJO GRAFFITI — closes the scroll -->
     <div class="work-item">
       <img class="work-image" src="navajo_graffiti_arizona.jpeg" alt="" onclick="openLb(this.src)" loading="lazy">
       <div class="work-meta"><span class="work-title">Navajo Graffiti, Arizona</span><span class="work-year">2012</span></div>
@@ -652,8 +569,7 @@
     <div class="about-left">
       <h2>Grant Arthur Barnhart</h2>
       <p>Grant Arthur Barnhart has been making large-scale works for over two decades — widely exhibited, reviewed in the Los Angeles Times, Art in America, Juxtapoz, and the Seattle Times. Solo shows in Los Angeles, Seattle, Berlin, Luxembourg, and New York. Gallery representation on both coasts.</p>
-      <p>The current practice merges analog and digital — oil pastel and pencil drawings on newsprint become characters summoned into AI-constructed environments, creating worlds tailored entirely to his own vision. The composite works continue an investigation begun in the mid-2000s — constructing fictional environments where art and mythology coexist. The tools changed. The question didn't.</p>
-      <p>Barnhart has lived with bipolar disorder his entire life, diagnosed only recently. He makes work because of it, not despite it.</p>
+      <p>The current body of work is oil pastel and pencil on newsprint — mythic figures, ritual marks, raw and direct. It extends an investigation begun in the mid-2000s into the nature of symbols and the persistence of image-making as a human act. The tools have changed. The question hasn't.</p>
       <p>Born 1978. Based in New York.</p>
     </div>
     <div class="about-right">
@@ -671,8 +587,8 @@
     <h2>Inquire</h2>
     <div class="contact-grid">
       <div class="contact-info">
-        <p>Original works available. New drawings on newsprint, 24 × 36 inches. Select paintings and digital works also available. For pricing, availability, or to discuss acquiring work, reach out directly.</p>
-        <a href="/cdn-cgi/l/email-protection#660104071408151213020f0926010b070f0a4805090b" class="contact-link"><span class="__cf_email__" data-cfemail="5c3b3e3d2e322f28293835331c3b313d3530723f3331">[email&#160;protected]</span></a>
+        <p>Original works available. New drawings on newsprint, 24 × 36 inches. Select paintings also available. For pricing, availability, or to discuss acquiring work, reach out directly.</p>
+        <a href="mailto:gbarnstudio@gmail.com" class="contact-link">gbarnstudio@gmail.com</a>
         <a href="https://instagram.com/gbarn.studio" target="_blank" class="contact-link">Instagram — @gbarn.studio</a>
       </div>
       <form onsubmit="handleSubmit(event)">
@@ -722,12 +638,11 @@
   <button class="lb-next" onclick="lbNav(1)">&#8594;</button>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   window.addEventListener('scroll', () => {
     document.getElementById('hdr').classList.toggle('scrolled', scrollY > 20);
   });
 
-  // Build image list from all work-image elements
   let lbImages = [];
   let lbIndex = 0;
 
@@ -754,19 +669,16 @@
     document.body.style.overflow = '';
   }
 
-  // Close on background click
   document.getElementById('lb').addEventListener('click', function(e) {
     if (e.target === this) closeLb();
   });
 
-  // Keyboard nav
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') closeLb();
     if (e.key === 'ArrowRight') lbNav(1);
     if (e.key === 'ArrowLeft') lbNav(-1);
   });
 
-  // Swipe support for mobile
   let touchStartX = 0;
   document.getElementById('lb').addEventListener('touchstart', e => {
     touchStartX = e.changedTouches[0].screenX;
